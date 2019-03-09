@@ -1,0 +1,23 @@
+
+.title {
+    text-align: center;
+}
+
+.v-line {
+    display: inline;
+    border-left: 2px solid grey;
+    padding: 0 2px;
+
+}
+
+#top-card {
+    margin-bottom: 20px;
+}
+
+#bottom-card {
+    margin-top: 20px;
+}
+
+#controlPanel {
+    padding: 20px 0;
+}

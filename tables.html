@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Hot Restaurant</title>
+    <title>Reserve A Table</title>
     <!-- Custom stylesheet -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="./src/css/styles.css">
@@ -23,14 +23,38 @@
         <div class="jumbotron title">
             <h1 id="title-heading"><i class="fas fa-fire"></i> Hot Restaurant</h1>
             <hr id="h-line">
-            <h3>We only have 5 tables! Book your seat before they all are gone!</h3>
-            <button class="btn btn-primary btn-lg"><i class="fas fa-table"></i> View Tables</button>
-            <button class="btn btn-danger btn-lg"><i class="fas fa-credit-card"></i> Make Reservations</button>
+            <h3>Current Reservations and Waiting List</h3>
+            <button class="btn btn-danger btn-lg"><i class="fas fa-credit-card"></i> Make Reservation</button>
+            <button class="btn btn-light btn-lg"><i class="fas fa-home"></i></button>
         </div>
+ 
+
+        <div class="card" id="top-card">
+            <div class="card-header">
+                Current Reservations
+            </div>
+            <div class="card-body">
+
+            </div>
+        </div>
+
+        <div class="card" id="bottom-card">
+            <div class="card-header">
+                Waiting List
+            </div>
+            <div class="card-body">
+
+            </div>
+        </div>
+
+        <h3 id="controlPanel">Control Panel</h3>
+
+        <a href="#">Clear Table</a>
+        <div class="v-line"></div>
         <a href="#">API Table Link</a>
         <div class="v-line"></div>
         <a href="#">API Wait List</a>
+
     </div>
-    
 </body>
 </html>

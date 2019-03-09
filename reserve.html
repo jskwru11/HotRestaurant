@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Hot Restaurant</title>
+    <title>Reserve A Table</title>
     <!-- Custom stylesheet -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="./src/css/styles.css">
@@ -23,14 +23,46 @@
         <div class="jumbotron title">
             <h1 id="title-heading"><i class="fas fa-fire"></i> Hot Restaurant</h1>
             <hr id="h-line">
-            <h3>We only have 5 tables! Book your seat before they all are gone!</h3>
+            <h3>Make Your Reservation</h3>
             <button class="btn btn-primary btn-lg"><i class="fas fa-table"></i> View Tables</button>
-            <button class="btn btn-danger btn-lg"><i class="fas fa-credit-card"></i> Make Reservations</button>
+            <button class="btn btn-light btn-lg"><i class="fas fa-home"></i></button>
+        </div>
+ 
+
+        <div class="card">
+            <div class="card-header">
+                Table Reservation
+            </div>
+            <div class="card-body">
+                <form action="">
+                    <div class="form-group">
+                        <label for="userName">Name</label>
+                        <input type="text" class="form-control" name="userName" id="">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="userPhone">Phone Number</label>
+                        <input type="tel" class="form-control" name="userPhone" id="">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="userEmail">Email</label>
+                        <input type="email" class="form-control" name="userEmail" id="">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="userID">Unique ID</label>
+                        <input type="text" class="form-control" name="userID" id="">
+                    </div>
+
+                    <button class="btn btn-primary btn-md">Submit</button>
+
+                </form>
+            </div>
         </div>
         <a href="#">API Table Link</a>
         <div class="v-line"></div>
         <a href="#">API Wait List</a>
     </div>
-    
 </body>
 </html>
