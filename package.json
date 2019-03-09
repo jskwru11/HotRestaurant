@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/jskwru11/HotRestaurant/issues"
   },
-  "homepage": "https://github.com/jskwru11/HotRestaurant#readme"
+  "homepage": "https://github.com/jskwru11/HotRestaurant#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
 }
