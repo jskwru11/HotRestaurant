@@ -9,12 +9,13 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="./src/css/styles.css">
 
+
     
     <!-- Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
+    <script src="https://code.jquery.com/jquery.js"></script>
     <!-- Font Awesome-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> 
 </head>
@@ -24,8 +25,8 @@
             <h1 id="title-heading"><i class="fas fa-fire"></i> Hot Restaurant</h1>
             <hr id="h-line">
             <h3>Current Reservations and Waiting List</h3>
-            <button class="btn btn-danger btn-lg"><i class="fas fa-credit-card"></i> Make Reservation</button>
-            <button class="btn btn-light btn-lg"><i class="fas fa-home"></i></button>
+          <a href="reserve"> <button class="btn btn-danger btn-lg"><i class="fas fa-credit-card"></i> Make Reservation</button></a> 
+           <a href="/"><button class="btn btn-light btn-lg"><i class="fas fa-home"></i></button></a> 
         </div>
  
 
@@ -33,7 +34,7 @@
             <div class="card-header">
                 Current Reservations
             </div>
-            <div class="card-body">
+            <div class="card-body" id="reservations">
 
             </div>
         </div>
@@ -42,7 +43,7 @@
             <div class="card-header">
                 Waiting List
             </div>
-            <div class="card-body">
+            <div class="card-body" id="waitlist">
 
             </div>
         </div>
@@ -54,7 +55,56 @@
         <a href="#">API Table Link</a>
         <div class="v-line"></div>
         <a href="#">API Wait List</a>
-
     </div>
+
+    <script>
+    $.get("api/tables")
+    .then(data => {
+       
+// map = for every element in an array, you map what you want to do to the element
+        data.map((table, idx) => {
+            const tableDiv = $("<div>");
+            const tableNumber = $("<p>");
+        const pName = $("<p>");
+        const pPhone = $("<p>");
+        const pEmail = $("<p>");
+        const pID = $("<p>");
+        const blankRow = $("<hr>");
+
+            tableNumber.html(`Table Number: ${idx+1}`);
+           pName.html(table.name);
+           pPhone.html(table.phone);
+           pEmail.html(table.email);
+           pID.html(table.ID);
+           tableDiv.append(tableNumber, pName, pPhone, pEmail, pID, blankRow);
+            $("#reservations").append(tableDiv);
+        })
+    });
+
+    $.get("api/waitlist")
+    .then(data => {
+        const tableDiv = $("<div>");
+            const tableNumber = $("<p>");
+        const pName = $("<p>");
+        const pPhone = $("<p>");
+        const pEmail = $("<p>");
+        const pID = $("<p>");
+        const blankRow = $("<hr>");
+// map = for every element in an array, you map what you want to do to the element
+        data.map((table, idx) => {
+            tableNumber.html(`Table Number: ${idx+1}`);
+           pName.html(table.name);
+           pPhone.html(table.phone);
+           pEmail.html(table.email);
+           pID.html(table.ID);
+           tableDiv.append(tableNumber, pName, pPhone, pEmail, pID, blankRow);
+            $("#waitlist").append(tableDiv);
+        })
+    });
+    
+    
+    </script>
+
+
 </body>
 </html>

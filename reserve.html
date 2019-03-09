@@ -14,7 +14,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
+    <script src="https://code.jquery.com/jquery.js"></script>
     <!-- Font Awesome-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> 
 </head>
@@ -24,9 +24,8 @@
             <h1 id="title-heading"><i class="fas fa-fire"></i> Hot Restaurant</h1>
             <hr id="h-line">
             <h3>Make Your Reservation</h3>
-            <button class="btn btn-primary btn-lg"><i class="fas fa-table"></i> View Tables</button>
-            <button class="btn btn-light btn-lg"><i class="fas fa-home"></i></button>
-        </div>
+           <a href="tables"> <button class="btn btn-primary btn-lg"><i class="fas fa-table"></i> View Tables</button></a>
+           <a href="/"><button class="btn btn-light btn-lg"><i class="fas fa-home"></i></button></a> 
  
 
         <div class="card">
@@ -34,35 +33,58 @@
                 Table Reservation
             </div>
             <div class="card-body">
-                <form action="">
+                <form action="" id="createReservation">
                     <div class="form-group">
                         <label for="userName">Name</label>
-                        <input type="text" class="form-control" name="userName" id="">
+                        <input type="text" class="form-control" name="userName" id="userName">
                     </div>
 
                     <div class="form-group">
                         <label for="userPhone">Phone Number</label>
-                        <input type="tel" class="form-control" name="userPhone" id="">
+                        <input type="tel" class="form-control" name="userPhone" id="userPhone">
                     </div>
 
                     <div class="form-group">
                         <label for="userEmail">Email</label>
-                        <input type="email" class="form-control" name="userEmail" id="">
+                        <input type="email" class="form-control" name="userEmail" id="userEmail">
                     </div>
 
                     <div class="form-group">
                         <label for="userID">Unique ID</label>
-                        <input type="text" class="form-control" name="userID" id="">
+                        <input type="text" class="form-control" name="userID" id="userID">
                     </div>
 
-                    <button class="btn btn-primary btn-md">Submit</button>
+                    <button type="submit" class="btn btn-primary btn-md">Submit</button>
 
                 </form>
             </div>
-        </div>
+        </div>  
         <a href="#">API Table Link</a>
         <div class="v-line"></div>
         <a href="#">API Wait List</a>
     </div>
+
+    <script>
+    // This code creates the client side action for when the submit button is pressed. This uses AJAX. It creates a request
+    // to post to api/tables
+    // There will be a partnering server side code using express to tell the server what to do when the below function is executed
+    // and the /tables page is hit
+
+    $("#createReservation").on("submit", function(event){
+        event.preventDefault();
+        console.log("form submitted");
+        const newTable = {
+        name: $("#userName").val(),
+        phone: $("#userPhone").val(),
+        email: $("#userEmail").val(),
+        ID: $("#userID").val(),
+            };
+    $.post("api/tables", newTable)
+        .then(function(data) {
+        console.log("add table");
+        // alert("Checking Availability");
+    })
+});
+        </script>
 </body>
 </html>
